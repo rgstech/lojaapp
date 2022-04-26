@@ -1,4 +1,4 @@
-class UserController {
+class UserController { // not using... for future implementation
 
     constructor(UserModel) {
   
