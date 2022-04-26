@@ -38,7 +38,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/login", (req, res) => {
 
-  if (req.body.user == "rodrigo" && req.body.password == "123") {
+  if (req.body.user == "rodrigo" && req.body.password == "123") { // for test/example only, use a database to authenticate user!
+                                                                  // somente para teste/exemplo, use o banco de dados para autenticar o usuario! 
     const token = jwt.sign({ userId: 1 }, SECRET, { expiresIn: 600 });
 
     res.json({ auth: true, token });
