@@ -11,6 +11,11 @@ class UserController { // not using... for future implementation
       this.model.findAll(callback);
   
     }
+
+    getByUser(_name, callback) {
+
+      this.model.findByUser(_name, callback);
+    }
   
     getById(_id, callback) {
   
@@ -40,7 +45,7 @@ class UserController { // not using... for future implementation
   
   module.exports = function (UserModel) {
   
-    return new ClienteController(UserModel);
+    return new UserController(UserModel);
   
   }
   
