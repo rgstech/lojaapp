@@ -8,7 +8,7 @@ const userController = require('../controllers/UserController')(userModel);
 
 
 router.get('/', function(req, res, next) {
-  console.log(req.userId + 'fez esta chamada');
+ 
   userController.getAll( (result) => { res.json(result); } );
 
 });
@@ -24,7 +24,7 @@ router.post('/', function(req, res, next) {
  
   let data = req.body;
 
-  userController.create(data, (result) => { res.json(result); } ) ;
+  userController.create(data, (result) => { res.json(result); } );
  
 });
 
@@ -32,13 +32,13 @@ router.put('/', function(req, res, next) {
  
   let data = req.body;
 
-  userController.update(data, (result) => { res.json(result); } ) ;
+  userController.update(data, (result) => { res.json(result); } );
  
 });
 
 router.delete('/:id', function(req, res, next) {
  
-    userController.remove(req.params.id, (result) => { res.json(result); } ) ;
+    userController.remove(req.params.id, (result) => { res.json(result); } );
  
 });
 

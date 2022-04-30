@@ -17,9 +17,13 @@ const indexRouter         = require("./routes/index");
 
 const clientesRouter      = require("./routes/clientes");
 
+const userRouter          = require("./routes/user");
+
 const jwt                 = require("jsonwebtoken");
 
 const verifyJWT           = require('./middlewares/authjwt');
+
+const adminOnly           = require('./middlewares/adminOnly');
 
 const blacklist           = require('./util/blacklist');
 
@@ -72,6 +76,8 @@ app.use("/logout", (req, res) => {
 });
 
 app.use("/", indexRouter);
+
 app.use("/clientes", verifyJWT, clientesRouter);
+app.use("/users", verifyJWT, /* adminOnly , */ userRouter);
 
 module.exports = app;
