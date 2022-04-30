@@ -1,10 +1,19 @@
+const userController = require("../controllers/UserController");
 
 const adminOnly = (req, res, next) => {
 
-  if (req.user && req.user.role === "admin") return next();
+  userController.getByUser(req.body.name, (vuser) => {
+    //console.log(vuser);
+    if (vuser.dataValues["role"] == "admin") {
+      return next();
 
-  res.status(401).end();
+    } else {
+
+      res.status(401).json({message: "somente admin!"});
+    }
+
+  });
 
 };
 
-module.exports = adminOnly; 
+module.exports = adminOnly;
