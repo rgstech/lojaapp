@@ -1,8 +1,15 @@
+const Role = require('../models/Role');
+const User = require('../models/User');
+
 class UserController { // not using... for future implementation
 
     constructor(UserModel) {
   
       this.model = UserModel;
+
+      
+      Role.hasMany(User);
+      User.belongsTo(Role);
   
     }
   

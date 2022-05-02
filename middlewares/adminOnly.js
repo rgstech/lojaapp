@@ -1,10 +1,12 @@
-const userController = require("../controllers/UserController");
+const userModel      = require('../models/UserModel');
+const userController = require("../controllers/UserController")(userModel);
+
 
 const adminOnly = (req, res, next) => {
-
+   
   userController.getByUser(req.body.name, (vuser) => {
-    //console.log(vuser);
-    if (vuser.dataValues["role"] == "admin") {
+    
+    if (vuser.role.dataValues.role == "admin") {
       return next();
 
     } else {

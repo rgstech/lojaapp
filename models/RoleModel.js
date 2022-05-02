@@ -1,12 +1,11 @@
 //const axios   = require("axios");
-const User = require("./User");
 const Role = require("./Role");
 
-class UserModel {
+class RoleModel {
 
   async findAll(callback) {
 
-    const resdata = await User.findAll({ raw: true });
+    const resdata = await Role.findAll({ raw: true });
     
     callback(resdata);
 
@@ -14,15 +13,15 @@ class UserModel {
 
   async find(_id, callback) {
 
-    const resdata = await User.findAll({ where: { id: _id } });
+    const resdata = await Role.findAll({ where: { id: _id } });
 
     callback(resdata);
 
   }
 
-  async findByUser(_name, callback) {
+  async findByRole(_role, callback) {
 
-    const resdata =  await User.findOne( { where: { name: _name },  include: Role} );
+    const resdata =  await Role.findOne( { where: { role: _role }} );
 
     callback(resdata);
 
@@ -31,14 +30,14 @@ class UserModel {
 
   async create(data, callback) {
 
-    const resdata = await User.create(data);
+    const resdata = await Role.create(data);
     callback(resdata);
 
   }
 
   async update(data, callback) {
 
-    const resdata = await User.update(
+    const resdata = await Role.update(
       { ...data },
       {
         where: {
@@ -53,7 +52,7 @@ class UserModel {
 
   async remove(_id, callback) {
 
-    const resdata = await User.destroy({
+    const resdata = await Role.destroy({
       where: {
         id: _id,
       },
@@ -63,4 +62,4 @@ class UserModel {
   }
 }
 
-module.exports = new UserModel();
+module.exports = new RoleModel();

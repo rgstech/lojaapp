@@ -47,6 +47,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/login", (req, res) => {
 
 
+
+
   userController.getByUser(req.body.name, (vuser) => {
         
               if (vuser.dataValues['password'] == req.body.password) {
@@ -78,6 +80,6 @@ app.use("/logout", (req, res) => {
 app.use("/", indexRouter);
 
 app.use("/clientes", verifyJWT, clientesRouter);
-app.use("/users", verifyJWT, /* adminOnly , */ userRouter);
+app.use("/users", verifyJWT,  adminOnly, userRouter);
 
 module.exports = app;

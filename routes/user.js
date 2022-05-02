@@ -1,9 +1,8 @@
 const express = require('express');
-const router = express.Router();
+const router  = express.Router();
 
-const userModel = require('../models/UserModel');
+const userModel      = require('../models/UserModel');
 const userController = require('../controllers/UserController')(userModel);
-
 
 
 
@@ -17,7 +16,6 @@ router.get('/:id', function(req, res, next) {
  
     userController.getById( req.params.id, (result) => { res.json(result); } );
  
-
 });
 
 router.post('/', function(req, res, next) {

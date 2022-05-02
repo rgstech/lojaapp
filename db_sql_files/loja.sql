@@ -1,7 +1,7 @@
 ﻿# Host: localhost  (Version 5.5.5-10.4.21-MariaDB)
-# Date: 2022-04-30 16:38:33
+# Date: 2022-05-01 22:07:59
 # Generator: MySQL-Front 6.1  (Build 1.26)
-# database name:  loja
+#database name: 'loja'
 
 #
 # Structure for table "cliente"
@@ -31,7 +31,7 @@ CREATE TABLE `role` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `role` varchar(25) NOT NULL DEFAULT '',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "role"
@@ -48,14 +48,14 @@ CREATE TABLE `user` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `password` varchar(180) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `role` int(11) NOT NULL,
+  `roleId` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`Id`),
-  KEY `role_idx` (`role`),
-  CONSTRAINT `role` FOREIGN KEY (`role`) REFERENCES `role` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  KEY `role_idx` (`roleId`),
+  CONSTRAINT `role` FOREIGN KEY (`roleId`) REFERENCES `role` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 #
 # Data for table "user"
 #
 
-INSERT INTO `user` VALUES (2,'admin','admin',1),(3,'user','user',2);
+INSERT INTO `user` VALUES (2,'admin','1234',1),(3,'user','1234',2);
