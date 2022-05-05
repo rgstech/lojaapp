@@ -1,4 +1,3 @@
-//const axios   = require("axios");
 const User = require("./User");
 const Role = require("./Role");
 

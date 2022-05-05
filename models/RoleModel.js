@@ -1,4 +1,3 @@
-//const axios   = require("axios");
 const Role = require("./Role");
 
 class RoleModel {
